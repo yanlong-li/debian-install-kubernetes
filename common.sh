@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 # 替换清华大学mirror
 cat <<EOF | tee /etc/apt/sources.list
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
