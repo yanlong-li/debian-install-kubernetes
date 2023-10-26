@@ -21,22 +21,26 @@ EOF
 apt update
 apt install -y curl gpg
 
+containerdVersion=1.7.7
 # 这四个文件要走 github 比较慢，可以换成其它源
-curl -o containerd-1.7.5-linux-amd64.tar.gz https://ghproxy.com/https://github.com/containerd/containerd/releases/download/v1.7.5/containerd-1.7.5-linux-amd64.tar.gz
-tar Cxzvf /usr/local containerd-1.7.5-linux-amd64.tar.gz
+curl -o containerd-${containerdVersion}-linux-amd64.tar.gz https://ghproxy.com/https://github.com/containerd/containerd/releases/download/v{containerdVersion}/containerd-{containerdVersion}-linux-amd64.tar.gz
+tar Cxzvf /usr/local containerd-${containerdVersion}-linux-amd64.tar.gz
 
 mkdir /usr/local/lib/systemd/system -p
 curl -o /usr/local/lib/systemd/system/containerd.service https://ghproxy.com/https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
 systemctl daemon-reload
 systemctl enable --now containerd
 
-
-curl -o runc.amd64 https://ghproxy.com/https://github.com/opencontainers/runc/releases/download/v1.1.9/runc.amd64
+# runc
+runcVersion=1.1.9
+curl -o runc.amd64 https://ghproxy.com/https://github.com/opencontainers/runc/releases/download/v${runcVersion}/runc.amd64
 install -m 755 runc.amd64 /usr/local/sbin/runc
 
-curl -o cni-plugins-linux-amd64-v1.3.0.tgz https://ghproxy.com/https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz
+# cni
+cniVersion=1.3.0
+curl -o cni-plugins-linux-amd64-v${cniVersion}.tgz https://ghproxy.com/https://github.com/containernetworking/plugins/releases/download/v${cniVersion}/cni-plugins-linux-amd64-v${cniVersion}.tgz
 mkdir /opt/cni/bin -p
-tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
+tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v${cniVersion}.tgz
 
 
 mkdir /etc/containerd/
