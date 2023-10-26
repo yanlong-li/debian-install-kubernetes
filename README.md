@@ -28,7 +28,7 @@ chmod +x common.sh control.sh
 ```shell
 chmod +x common.sh
 ./common.sh
-kubeadm join --token xxx.xxxx 172.28.216.70:6443 --discovery-token-ca-cert-hash sha256:xxx
+# kubeadm join --token xxx.xxxx 172.28.216.70:6443 --discovery-token-ca-cert-hash sha256:xxx
 ```
 
 

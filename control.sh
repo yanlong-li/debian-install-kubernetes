@@ -16,4 +16,4 @@ sed -i 's@192.168.0.0/16@10.244.0.0/16@' custom-resources.yaml
 
 kubectl create -f custom-resources.yaml
 
-watch kubectl get pods -n calico-system
+watch "kubectl get pods -n calico-system && kubectl get nodes"
