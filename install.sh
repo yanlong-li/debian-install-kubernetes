@@ -80,13 +80,13 @@ echo "您选择的角色是 $install_role"
 return
 ./sys.sh
 
-if [ "$install_container_runtime" -eq "CRI-O" ]; then
+if [ "$install_container_runtime" = "CRI-O" ]; then
   ./cri-o.sh
 else
   ./containerd.sh
 fi
 
-if [ "$install_role" -eq "Control" ]; then
+if [ "$install_role" = "Control" ]; then
   ./control.sh
 else
   ./sub.sh
