@@ -75,6 +75,9 @@ choose_selected=
 choose_option "Control" "Node"
 install_role="$choose_selected"
 
+echo "您选择的容器是 $install_container_runtime";
+echo "您选择的角色是 $install_role"
+return
 ./sys.sh
 
 if [ "$install_container_runtime" -eq "CRI-O" ]; then
