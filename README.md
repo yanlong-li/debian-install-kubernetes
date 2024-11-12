@@ -5,8 +5,8 @@
 
 不同云厂商的 Debian 环境可能不一样，不一定适用。
 
-* 注意!!! common.sh 脚本会修改 apt 源等环境变量，对系统产生一些副作用，如不需要可注释。
 * 不对使用该脚本产生的问题负责！！！请仅在开发、学习、测试环境使用！！！
+* 如果需要更换 apt 镜像，请运行 apt-mirror.sh 或手动更换。
 
 ## command
 
@@ -15,19 +15,10 @@
 git clone https://github.com/yanlong-li/debian-install-kubernetes && cd debian-install-kubernetes
 ```
 
-### control-plane
+### 安装
 
 ```shell
-chmod +x common.sh control.sh
-./common.sh && ./control.sh
-```
-
-### sub nodes
-
-```shell
-chmod +x common.sh
-./common.sh
-# kubeadm join --token xxx.xxxx 172.28.216.70:6443 --discovery-token-ca-cert-hash sha256:xxx
+./install.sh
 ```
 
 
